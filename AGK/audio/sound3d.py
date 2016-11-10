@@ -3,7 +3,7 @@ import os
 import libaudioverse
 import platform_utils.paths
 
-sound_dir = os.path.join(platform_utils.paths.embedded_data_path(), 'sounds')
+sound_dir = os.path.join(platform_utils.paths.embedded_data_path(), '')
 
 class SoundLoader(object):
 
@@ -20,7 +20,7 @@ class SoundLoader(object):
 		self.source = libaudioverse.SourceNode(self.server, self.world)
 		if key not in self.cache:
 			b = libaudioverse.Buffer(self.server)
-			b.load_from_file(os.path.join(sound_dir, key+".ogg"))
+			b.load_from_file(os.path.join(sound_dir, key))
 			self.cache[key] = b
 		b = self.cache[key]
 		n = libaudioverse.BufferNode(self.server)
@@ -71,14 +71,17 @@ class audio_world(object):
 		self.reverb.t60=reverbtime
 		self.reverb.default_reverb_distance=50
 
-	def set_reverb_distance(distance):
+	def set_reverb_distance(self,distance):
 		self.reverb.default_reverb_distance=50
 
-	def set_reverb_time(time):
+	def set_reverb_time(self,time):
 		self.reverb.t60=time
 
-	def set_reverb_cutoff(cutoff)
+	def set_reverb_cutoff(self,cutoff):
 		self.reverb.cutoff_frequency=reverbcutoff
 
-	def set_reverb_density(density):
+	def set_reverb_density(self,density):
 		self.reverb.density=density
+
+	def shutdown(self):
+		libaudioverse.shutdown()
