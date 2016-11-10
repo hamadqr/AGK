@@ -12,6 +12,15 @@ class SoundLoader(object):
 		self.world = world
 		self.cache=dict()
 
+	def get_position(self):
+		position=self.source.position
+		return position
+
+	def set_position(self, position):
+		self.source.position=position
+
+	position = property(get_position, set_position)
+
 	def play_stationary(self, key,m):
 		s=self.load_sound(key)
 		s.source.position=m.x,m.y,m.z

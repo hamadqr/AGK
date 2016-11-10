@@ -10,7 +10,7 @@ sound_x=-5
 #next, we create a sound instance, called this time tick.
 tick=sound.sound()
 #then, we load the sound.
-tick.load("sound.ogg")
+tick.load("snd/sound.ogg")
 #then we play the sound looping.
 #then, we position the sound. We actually need to use the handle for now, but that will be changed.
 sp.position_sound_1d(tick.handle,my_x,sound_x,1,1)
