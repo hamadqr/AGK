@@ -17,21 +17,28 @@ class menu(object):
 		self.items.append(menu_item(text,name,True))
 
 	def run(self,intro):
+		self.speak(intro)
+		self.position=-1
+
 		while 1:
-			if keyboard.pressed()==pygame.K_UP:
-				if self.position>0:
-					self.position-=1
-				self.speak(self.items[self.position].text)
-			if keyboard.pressed()==pygame.K_DOWN:
-				if self.position<len(self.items)-1:
-					self.position+=1
-				self.speak(self.items[self.position].text)
+			for event in pygame.event.get():
+				if event.type == pygame.KEYDOWN:
+					if event.key==pygame.K_UP:
+						if self.position<=0:
+							self.position=0
+						else:
+							self.position-=1
+						self.speak(self.items[self.position].text)
+					if event.key==pygame.K_DOWN:
+						if self.position<len(self.items)-1:
+							self.position+=1
+						self.speak(self.items[self.position].text)
 
-			if keyboard.pressed()==pygame.K_RETURN:
-				return self.items[self.position]
+					if event.key==pygame.K_RETURN:
+						return self.items[self.position]
 
-			if keyboard.pressed()==pygame.K_ESCAPE:
-				return -1
+					if event.key==pygame.K_ESCAPE:
+						return -1
 
 #internal funcs
 	def speak(self,text):
