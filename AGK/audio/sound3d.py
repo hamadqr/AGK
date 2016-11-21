@@ -13,7 +13,8 @@ class SoundLoader(object):
 		self.world = world
 		self.pack = pack
 		if pack!="":
-			self.pdata=zipfile.ZipFile(self.pack)
+			self.zdata=zipfile.ZipFile(self.pack)
+			self.pdata={name: self.zdata.read(name) for name in self.zdata.namelist()}
 		self.cache=dict()
 
 	def get_position(self):
@@ -41,7 +42,6 @@ class SoundLoader(object):
 		b = self.cache[key]
 		n = libaudioverse.BufferNode(self.server)
 		n.buffer.value =b
-		n.connect(0, self.source, 0)
 		return Sound(n,self.source)
 
 class Sound(object):
