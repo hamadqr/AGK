@@ -1,4 +1,4 @@
-import packer
+import zipfile
 import os
 
 import libaudioverse
@@ -8,14 +8,12 @@ sound_dir = os.path.join(platform_utils.paths.embedded_data_path(), '')
 
 class SoundLoader(object):
 
-	def __init__(self, server, world,pack="",key=""):
-		pa=packer.packer()
+	def __init__(self, server, world,pack=""):
 		self.server = server
 		self.world = world
 		self.pack = pack
-		self.key = key
-		if pack!="" and key!="":
-			self.pdata=pa.decrypt_file(self.key,self.pack)
+		if pack!="":
+			self.pdata=zipfile.ZipFile(self.pack)
 		self.cache=dict()
 
 	def get_position(self):
