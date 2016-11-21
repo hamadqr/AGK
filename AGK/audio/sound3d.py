@@ -1,3 +1,4 @@
+import packer
 import os
 
 import libaudioverse
@@ -7,9 +8,14 @@ sound_dir = os.path.join(platform_utils.paths.embedded_data_path(), '')
 
 class SoundLoader(object):
 
-	def __init__(self, server, world):
+	def __init__(self, server, world,pack="",key=""):
+		pa=packer.packer()
 		self.server = server
 		self.world = world
+		self.pack = pack
+		self.key = key
+		if pack!="" and key!="":
+			self.pdata=pa.decrypt_file(self.key,self.pack)
 		self.cache=dict()
 
 	def get_position(self):
@@ -29,7 +35,10 @@ class SoundLoader(object):
 		self.source = libaudioverse.SourceNode(self.server, self.world)
 		if key not in self.cache:
 			b = libaudioverse.Buffer(self.server)
-			b.load_from_file(os.path.join(sound_dir, key))
+			if self.pdata=="":
+				b.load_from_file(os.path.join(sound_dir, key))
+			else:
+				b.decode_from_array(self.pdata[key])
 			self.cache[key] = b
 		b = self.cache[key]
 		n = libaudioverse.BufferNode(self.server)

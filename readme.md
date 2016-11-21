@@ -12,4 +12,5 @@ This is still in beta, so not everything is done. There still may be bugs.
 Christopher Toth for his many libraries that made a lot of this possible. www.getaccessibleapps.com
 Steel TTS project for the direct SAPI 5 and OS X Say code. https://sourceforge.net/projects/steeltts/
 Austin Hicks (Camlorn) For the Libaudioverse audio library that makes the 3D sound possible. www.camlorn.net
+Hrvoje Katic for the packing functions.
 Enjoy!
