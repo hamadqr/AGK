@@ -40,11 +40,11 @@ def position_sound_custom_1d(handle,  listener_x,  source_x,  pan_step,  volume_
  try:
   handle.pan=fp
  except:
-  print "Oops? "+str(fv)+" "+str(fp)
+ pass
  try:
   handle.volume=1+fv
  except:
-  print "Oops? "+str(fv)+" "+str(fp)
+  pass
 
 def position_sound_2d(handle,  listener_x,  listener_y,  source_x,  source_y,  pan_step,  volume_step,  behind_pitch_decrease,  behind_volume_decrease=0):
  position_sound_custom_2d(handle, listener_x, listener_y, source_x, source_y, pan_step, volume_step, behind_pitch_decrease, behind_volume_decrease, 0.0, 0.0, 100.0)
@@ -94,11 +94,11 @@ def position_sound_custom_2d(handle,  listener_x,  listener_y,  source_x,  sourc
  try:
   handle.pan=fp
  except:
-  print "Oops? "+str(fv)+" "+str(fp)
+  pass
  try:
   handle.volume=1+fv
  except:
-  print "Oops? "+str(fv)+" "+str(fp)
+  pass
 
 def position_sound_3d(handle,  listener_x,  listener_y,  listener_z,  source_x,  source_y,  source_z,  pan_step,  volume_step,  behind_pitch_decrease,  behind_volume_decrease=0):
  position_sound_custom_2d(handle, listener_x, listener_y, listener_z, source_x, source_y, source_z, pan_step, volume_step, behind_pitch_decrease, behind_volume_decrease, 0.0, 0.0, 100.0)
@@ -161,8 +161,8 @@ def position_sound_custom_3d(handle,  listener_x,  listener_y,  listener_z,  sou
  try:
   handle.pan=fp
  except:
-  print "Oops? "+str(fv)+" "+str(fp)
+  pass
  try:
   handle.volume=1+fv
  except:
-  print "Oops? "+str(fv)+" "+str(fp)
+  pass
