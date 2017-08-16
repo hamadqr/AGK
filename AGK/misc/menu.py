@@ -70,24 +70,25 @@ class menu(object):
 						if self.item_sound:
 							self.itemsnd.stop()
 							self.itemsnd.play()
-					elif event.key==pygame.K_HOME:
-						self.position=0
-						if self.announce_position_info:
-							self._speak(self.items[self.position].text+". "+str(self.position+1)+" of "+str(len(self.items)))
-						else:
-							self._speak(self.items[self.position].text)
-						if self.item_sound:
-							self.itemsnd.stop()
-							self.itemsnd.play()
-					elif event.key==pygame.K_END:
-						self.position=len(self.items)-1
-						if self.announce_position_info:
-							self._speak(self.items[self.position].text+". "+str(self.position+1)+" of "+str(len(self.items)))
-						else:
-							self._speak(self.items[self.position].text)
-						if self.item_sound:
-							self.itemsnd.stop()
-							self.itemsnd.play()
+					elif self.home_and_end:
+						if event.key==pygame.K_HOME:
+							self.position=0
+							if self.announce_position_info:
+								self._speak(self.items[self.position].text+". "+str(self.position+1)+" of "+str(len(self.items)))
+							else:
+								self._speak(self.items[self.position].text)
+							if self.item_sound:
+								self.itemsnd.stop()
+								self.itemsnd.play()
+						elif event.key==pygame.K_END:
+							self.position=len(self.items)-1
+							if self.announce_position_info:
+								self._speak(self.items[self.position].text+". "+str(self.position+1)+" of "+str(len(self.items)))
+							else:
+								self._speak(self.items[self.position].text)
+							if self.item_sound:
+								self.itemsnd.stop()
+								self.itemsnd.play()
 
 					if event.key==pygame.K_RETURN and self.select_with_enter or event.key==pygame.K_SPACE and self.select_with_space:
 						if self.enter_sound:
