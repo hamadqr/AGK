@@ -40,7 +40,7 @@ def position_sound_custom_1d(handle,  listener_x,  source_x,  pan_step,  volume_
  try:
   handle.pan=fp
  except:
- pass
+  pass
  try:
   handle.volume=1+fv
  except:
